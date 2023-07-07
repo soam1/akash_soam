@@ -1,3 +1,5 @@
+import 'package:akash_soam/mobile/landing_page_mobile.dart';
+import 'package:akash_soam/web/landing_page_web.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: LayoutBuilder(
-        builder: (context, constraints) {},
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 800) {
+            return LandingPageWeb();
+          } else
+            return LandingPageMobile();
+        },
       ),
     );
   }
