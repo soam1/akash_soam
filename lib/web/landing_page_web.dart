@@ -12,6 +12,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
+    var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       drawer: Drawer(),
@@ -310,6 +311,43 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             ),
           ),
           //  FOURTH SECTION(contact me)
+          Container(
+            height: heightDevice,
+            child: Column(
+              children: [
+                SansBold(40, "Contact me"),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        MyTextFormField("First Name", "John", 1, 200),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        MyTextFormField("Last Name", "Wick", 1, 200),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        MyTextFormField(
+                            "Email", "wickjohn00@gmail.com", 1, 300),
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    Column(
+                      children: [
+                        MyTextFormField("Phone Number", "9876543210", 1, 250),
+                        MyTextFormField("Your Message", "I want to..", 10, 500),
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ),
+              ],
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            ),
+          ),
         ],
       ),
     );

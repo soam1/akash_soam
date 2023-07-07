@@ -101,3 +101,50 @@ class Skill extends StatelessWidget {
     );
   }
 }
+
+class MyTextFormField extends StatelessWidget {
+  final labelText;
+  final hintText;
+  final noOfMaxLines;
+  final width;
+
+  const MyTextFormField(
+      this.labelText, this.hintText, this.noOfMaxLines, this.width,
+      {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Sans(16.0, labelText),
+        SizedBox(
+          height: 5,
+        ),
+        SizedBox(
+            child: TextFormField(
+              maxLines: noOfMaxLines,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.teal),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(width: 2, color: Colors.tealAccent),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15.0),
+                  ),
+                ),
+                hintText: hintText,
+                hintStyle: GoogleFonts.poppins(
+                  fontSize: 14,
+                ),
+              ),
+            ),
+            width: this.width),
+      ],
+    );
+  }
+}
