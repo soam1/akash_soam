@@ -81,3 +81,23 @@ class Sans extends StatelessWidget {
     );
   }
 }
+
+class Skill extends StatelessWidget {
+  final nameOfSkill;
+  final size;
+
+  const Skill(this.size, this.nameOfSkill, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Sans(size, nameOfSkill),
+      decoration: BoxDecoration(
+        border: Border.all(
+            color: Colors.tealAccent, width: 2, style: BorderStyle.solid),
+        borderRadius: BorderRadius.circular(5),
+      ),
+      padding: EdgeInsets.all(7.0),
+    );
+  }
+}

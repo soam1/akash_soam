@@ -39,7 +39,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
       ),
       body: ListView(
         children: [
-          //FIRST PAGE
+          //FIRST SECTION(hOME)
           Container(
             height: heightDevice - 56,
             child: Row(
@@ -121,6 +121,99 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               ],
             ),
           ),
+          //SECOND SECTION(about me)
+          Container(
+            height: heightDevice / 1.5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/web.jpg",
+                  height: heightDevice / 1.7,
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SansBold(40, "About Me"),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Sans(15,
+                        "Hello I'm Akash Soam, I specialize in Application development(cross platform and native)"),
+                    Sans(15,
+                        "I strive to ensure astounding performance with state of "),
+                    Sans(15,
+                        "the art security for for Android, ios, web, windows"),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Skill(15, "Flutter"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "Dart"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "Java"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "Kotlin"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "Html"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "css"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        // Skill(15, "CPP"),
+                        // SizedBox(
+                        //   width: 7,
+                        // ),
+                        // Skill(15, "C"),
+                        // SizedBox(
+                        //   width: 7,
+                        // ),
+                        // Skill(15, "git"),
+                        // SizedBox(
+                        //   width: 7,
+                        // ),
+                        Skill(15, "Firebase"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "Android"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "ios"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "Android"),
+                        SizedBox(
+                          width: 7,
+                        ),
+                        Skill(15, "Android"),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
