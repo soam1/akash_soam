@@ -238,3 +238,33 @@ class _AnimatedCardWebState extends State<AnimatedCardWeb>
     );
   }
 }
+
+class TabsMobile extends StatefulWidget {
+  final text;
+  final route;
+
+  const TabsMobile({super.key, this.text, this.route});
+
+  @override
+  State<TabsMobile> createState() => _TabsMobileState();
+}
+
+class _TabsMobileState extends State<TabsMobile> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      color: Colors.black,
+      onPressed: () {},
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5.0),
+      ),
+      height: 20.0,
+      minWidth: 200.0,
+      child: Text(
+        widget.text,
+        style: GoogleFonts.openSans(fontSize: 20.0, color: Colors.white),
+      ),
+      elevation: 20.0,
+    );
+  }
+}
