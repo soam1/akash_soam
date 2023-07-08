@@ -2,6 +2,11 @@
 
 flutter portfolio
 
+ Deploy complete!(firebase)
+
+Project Console: https://console.firebase.google.com/project/akash-soam/overview
+Hosting URL: https://akash-soam.web.app
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
