@@ -123,8 +123,18 @@ class MyTextFormField extends StatelessWidget {
         ),
         SizedBox(
             child: TextFormField(
+              // inputFormatters: [
+              //   FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+              //   LengthLimitingTextInputFormatter(10),
+              // ],
               maxLines: noOfMaxLines,
               decoration: InputDecoration(
+                focusedErrorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10.0),
+                  ),
+                ),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.teal),
                   borderRadius: BorderRadius.all(
@@ -142,9 +152,89 @@ class MyTextFormField extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
+              // validator: (text) {
+              //   if (RegExp("\\bakash\\b", caseSensitive: false)
+              //       .hasMatch(text.toString())) {
+              //     return "Match found";
+              //   }
+              // },
+              // autovalidateMode: AutovalidateMode.onUserInteraction,
             ),
             width: this.width),
       ],
+    );
+  }
+}
+
+class AnimatedCardWeb extends StatefulWidget {
+  final imagePath;
+  final text;
+  final fit;
+  final reverse;
+
+  const AnimatedCardWeb(
+      {super.key,
+      @required this.imagePath,
+      @required this.text,
+      this.fit,
+      this.reverse});
+
+  @override
+  State<AnimatedCardWeb> createState() => _AnimatedCardWebState();
+}
+
+class _AnimatedCardWebState extends State<AnimatedCardWeb>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: Duration(
+      seconds: 4,
+    ),
+  )..repeat(reverse: true);
+
+  late Animation<Offset> _animation = Tween(
+          begin: widget.reverse == true ? Offset(0, 0.08) : Offset.zero,
+          end: widget.reverse == true ? Offset.zero : Offset(0, 0.08))
+      .animate(_controller);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(
+      position: _animation,
+      child: Card(
+        elevation: 30,
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              Image.asset(
+                widget.imagePath,
+                height: 200,
+                width: 200,
+                fit: widget.fit != null ? widget.fit : null,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              SansBold(15, widget.text),
+            ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          side: BorderSide(
+            color: Colors.tealAccent,
+          ),
+        ),
+        shadowColor: Colors.tealAccent,
+      ),
     );
   }
 }
