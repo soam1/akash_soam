@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TabsWeb extends StatefulWidget {
   final title;
+  final route;
 
-  const TabsWeb(this.title, {super.key});
+  const TabsWeb({super.key, this.title, this.route});
 
   @override
   State<TabsWeb> createState() => _TabsWebState();
@@ -15,36 +16,41 @@ class _TabsWebState extends State<TabsWeb> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) {
-        setState(() {
-          isSelected = true;
-        });
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed(widget.route);
       },
-      onExit: (_) {
-        setState(() {
-          isSelected = false;
-        });
-      },
-      child: AnimatedDefaultTextStyle(
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.elasticIn,
-        style: isSelected
-            ? GoogleFonts.oswald(
-                color: Colors.transparent,
-                shadows: [
-                  Shadow(
-                    color: Colors.black,
-                    offset: Offset(0, -5),
-                  ),
-                ],
-                fontSize: 25.0,
-                decoration: TextDecoration.underline,
-                decorationThickness: 2,
-                decorationColor: Colors.tealAccent)
-            : GoogleFonts.oswald(color: Colors.black, fontSize: 20.0),
-        child: Text(
-          widget.title,
+      child: MouseRegion(
+        onEnter: (_) {
+          setState(() {
+            isSelected = true;
+          });
+        },
+        onExit: (_) {
+          setState(() {
+            isSelected = false;
+          });
+        },
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.elasticIn,
+          style: isSelected
+              ? GoogleFonts.oswald(
+                  color: Colors.transparent,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      offset: Offset(0, -5),
+                    ),
+                  ],
+                  fontSize: 25.0,
+                  decoration: TextDecoration.underline,
+                  decorationThickness: 2,
+                  decorationColor: Colors.tealAccent)
+              : GoogleFonts.oswald(color: Colors.black, fontSize: 20.0),
+          child: Text(
+            widget.title,
+          ),
         ),
       ),
     );
@@ -254,7 +260,9 @@ class _TabsMobileState extends State<TabsMobile> {
   Widget build(BuildContext context) {
     return MaterialButton(
       color: Colors.black,
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).pushNamed(widget.route);
+      },
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),
@@ -265,6 +273,83 @@ class _TabsMobileState extends State<TabsMobile> {
         style: GoogleFonts.openSans(fontSize: 20.0, color: Colors.white),
       ),
       elevation: 20.0,
+    );
+  }
+}
+
+class AnimatedCardMobile extends StatefulWidget {
+  final imagePath;
+  final text;
+  final fit;
+  final reverse;
+  final height;
+  final width;
+
+  const AnimatedCardMobile(
+      {super.key,
+      @required this.imagePath,
+      @required this.text,
+      this.fit,
+      this.reverse,
+      this.height,
+      this.width});
+
+  @override
+  State<AnimatedCardMobile> createState() => _AnimatedCardMobileState();
+}
+
+class _AnimatedCardMobileState extends State<AnimatedCardMobile>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: Duration(
+      seconds: 4,
+    ),
+  )..repeat(reverse: true);
+
+  late Animation<Offset> _animation = Tween(
+          begin: widget.reverse == true ? Offset(0, 0.08) : Offset.zero,
+          end: widget.reverse == true ? Offset.zero : Offset(0, 0.08))
+      .animate(_controller);
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SlideTransition(
+      position: _animation,
+      child: Card(
+        elevation: 30.0,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              Image.asset(
+                widget.imagePath,
+                height: widget.height == null ? 200.0 : widget.height,
+                width: widget.width == null ? 200.0 : widget.width,
+                fit: widget.fit != null ? widget.fit : null,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              SansBold(15.0, widget.text),
+            ],
+            crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+          side: BorderSide(
+            color: Colors.tealAccent,
+          ),
+        ),
+        shadowColor: Colors.tealAccent,
+      ),
     );
   }
 }

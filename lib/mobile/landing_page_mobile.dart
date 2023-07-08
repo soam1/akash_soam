@@ -127,6 +127,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
       ),
       body: ListView(
         children: [
+          //FIRST SECTION
           Padding(
             padding: EdgeInsets.only(
               left: 20.0,
@@ -243,145 +244,77 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                     tealContainerForProgSkills("html"),
                     tealContainerForProgSkills("css"),
                     tealContainerForProgSkills("c/c++"),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "Flutter",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "Dart",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "Java",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "Kotlin",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "Android",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "Web",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "HTML",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "css",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.tealAccent,
-                    //       style: BorderStyle.solid,
-                    //       width: 2.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(5.0),
-                    //   ),
-                    //   padding: EdgeInsets.all(7.0),
-                    //   child: Text(
-                    //     "C,C++",
-                    //     style: GoogleFonts.openSans(fontSize: 15.0),
-                    //   ),
-                    // ),
                   ],
                 ),
               ],
             ),
+          ),
+          SizedBox(
+            height: 150.0,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SansBold(35.0, "What I do?"),
+              AnimatedCardMobile(
+                imagePath: "assets/webL.png",
+                text: "Web Development",
+                width: 300.0,
+              ),
+              SizedBox(
+                height: 35.0,
+              ),
+              AnimatedCardMobile(
+                imagePath: "assets/app.png",
+                text: "Android Development",
+                width: 300.0,
+              ),
+              SizedBox(
+                height: 35.0,
+              ),
+              AnimatedCardMobile(
+                imagePath: "assets/firebase.png",
+                text: "Backend Development",
+                width: 300.0,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 120.0,
+          ),
+          //  CONTACT SECTION
+          Wrap(
+            runSpacing: 20.0,
+            spacing: 20.0,
+            alignment: WrapAlignment.center,
+            children: [
+              SansBold(35.0, "Contact Me"),
+              MyTextFormField("First Name", "John", 1, widthDevice / 1.2),
+              MyTextFormField("Last Name", "Wick", 1, widthDevice / 1.2),
+              MyTextFormField("Phone", "+91 9876543210", 1, widthDevice / 1.2),
+              MyTextFormField(
+                  "Email", "wickjohn0@gmail.com", 1, widthDevice / 1.2),
+              MyTextFormField(
+                "Your Message",
+                "I want to...",
+                8,
+                widthDevice / 1.2,
+              ),
+              MaterialButton(
+                onPressed: () {},
+                elevation: 20.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                height: 60.0,
+                minWidth: widthDevice / 2.2,
+                color: Colors.tealAccent,
+                child: SansBold(20.0, "Submit"),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20.0,
           ),
         ],
       ),
