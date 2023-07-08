@@ -131,7 +131,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               children: [
                 Image.asset(
                   "assets/web.jpg",
-                  height: heightDevice / 1.7,
+                  height: widthDevice / 1.9,
                 ),
                 SizedBox(
                   width: 30,
@@ -229,100 +229,15 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   children: [
                     AnimatedCardWeb(
                         imagePath: "assets/webL.png", text: "Web development"),
-                    // Card(
-                    //   elevation: 30,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(15),
-                    //     child: Column(
-                    //       children: [
-                    //         Image.asset(
-                    //           "assets/webL.png",
-                    //           height: 200,
-                    //           width: 200,
-                    //         ),
-                    //         SizedBox(
-                    //           height: 10,
-                    //         ),
-                    //         SansBold(15, "Web development"),
-                    //       ],
-                    //       crossAxisAlignment: CrossAxisAlignment.start,
-                    //     ),
-                    //   ),
-                    //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15.0),
-                    //     side: BorderSide(
-                    //       color: Colors.tealAccent,
-                    //     ),
-                    //   ),
-                    //   shadowColor: Colors.tealAccent,
-                    // ),
                     AnimatedCardWeb(
                       imagePath: "assets/app.png",
                       text: "App development",
                       fit: BoxFit.contain,
                       reverse: true,
                     ),
-                    // Card(
-                    //   elevation: 30,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(15),
-                    //     child: Column(
-                    //       children: [
-                    //         Image.asset(
-                    //           "assets/app.png",
-                    //           height: 200,
-                    //           width: 200,
-                    //           fit: BoxFit.contain,
-                    //         ),
-                    //         SizedBox(
-                    //           height: 10,
-                    //         ),
-                    //         SansBold(15, "App development"),
-                    //         Sans(10,
-                    //             "You can see my projects from my github account"),
-                    //       ],
-                    //       crossAxisAlignment: CrossAxisAlignment.start,
-                    //     ),
-                    //   ),
-                    //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15.0),
-                    //     side: BorderSide(
-                    //       color: Colors.tealAccent,
-                    //     ),
-                    //   ),
-                    //   shadowColor: Colors.tealAccent,
-                    // ),
                     AnimatedCardWeb(
                         imagePath: "assets/firebase.png",
                         text: "Backend development"),
-                    // Card(
-                    //   elevation: 30,
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(15),
-                    //     child: Column(
-                    //       children: [
-                    //         Image.asset(
-                    //           "assets/firebase.png",
-                    //           height: 200,
-                    //           width: 200,
-                    //           // fit: BoxFit.contain,
-                    //         ),
-                    //         SizedBox(
-                    //           height: 10,
-                    //         ),
-                    //         SansBold(15, "Backend development"),
-                    //       ],
-                    //       crossAxisAlignment: CrossAxisAlignment.start,
-                    //     ),
-                    //   ),
-                    //   shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15.0),
-                    //     side: BorderSide(
-                    //       color: Colors.tealAccent,
-                    //     ),
-                    //   ),
-                    //   shadowColor: Colors.tealAccent,
-                    // ),
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 )
