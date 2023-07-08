@@ -1,5 +1,7 @@
 import 'package:akash_soam/components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -9,13 +11,80 @@ class LandingPageWeb extends StatefulWidget {
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
+  urlLauncher(String imagePath, String url) {
+    return IconButton(
+      icon: SvgPicture.asset(
+        imagePath,
+        // color: Colors.black,
+        width: 35,
+        height: 35,
+      ),
+      onPressed: () async {
+        await launchUrl(Uri.parse(url));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
     var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 72.0,
+              backgroundColor: Colors.tealAccent,
+              child: CircleAvatar(
+                radius: 70.0,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage("assets/mypic.png"),
+              ),
+            ),
+            SizedBox(
+              height: 15.0,
+            ),
+            SansBold(30.0, "Akash Soam"),
+            SizedBox(
+              height: 15.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // Image.asset(
+                //   "assets/instagram.png",
+                //   width: 35.0,
+                //   filterQuality: FilterQuality.high,
+                // ),
+
+                // IconButton(
+                //   icon: SvgPicture.asset(
+                //     "assets/instagram2.svg",
+                //     color: Colors.black,
+                //     width: 35,
+                //   ),
+                //   onPressed: () async {
+                //     await launchUrl(
+                //         Uri.parse("https://instagram.com/narendramodi"));
+                //   },
+                // ),
+                urlLauncher("assets/instagram2.svg",
+                    "https://instagram.com/narendramodi"),
+                urlLauncher("assets/linkedin.svg",
+                    "https://www.linkedin.com/in/akash-soam-414771225/"),
+                urlLauncher(
+                    "assets/github.svg", "https://www.github.com/soam1"),
+                // urlLauncher(
+                //     "assets/leetcode.svg", "https://www.leetcode.com/soamA"),
+              ],
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
@@ -148,8 +217,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         "Hello I'm Akash Soam, I specialize in Application development(cross platform and native)"),
                     Sans(15,
                         "I strive to ensure astounding performance with state of "),
-                    Sans(15,
-                        "the art security for for Android, ios, web, windows"),
+                    Sans(15, "the art security for Android, ios, web, windows"),
                     SizedBox(
                       height: 10,
                     ),
