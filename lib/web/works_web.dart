@@ -103,16 +103,22 @@ class _WorksWebState extends State<WorksWeb> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      height: 200.0,
-                      width: 300.0,
-                      child: AnimatedCardWeb(
-                        imagePath: "assets/portfolio.png",
-                        text: "",
-                      ),
+                    // SizedBox(
+                    //   height: 300.0,
+                    //   width: 300.0,
+                    //   child: AnimatedCardWeb(
+                    //     imagePath: "assets/portfolio.png",
+                    //     text: "",
+                    //     fit: BoxFit.contain,
+                    //   ),
+                    // ),
+                    AnimatedCardWeb(
+                      imagePath: "assets/portfolio.png",
+                      text: "",
+                      fit: BoxFit.contain,
                     ),
                     SizedBox(
-                      width: widthDevice / 3,
+                      width: widthDevice / 3.0,
                       child: Column(
                         children: [
                           SansBold(30.0, "Portfolio"),

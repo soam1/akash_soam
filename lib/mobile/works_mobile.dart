@@ -126,14 +126,19 @@ class _WorksMobileState extends State<WorksMobile> {
                   SizedBox(
                     height: 20.0,
                   ),
-                  SizedBox(
-                    height: 150.0,
-                    width: 300.0,
-                    child: AnimatedCardWeb(
-                      imagePath: "assets/portfolio.png",
-                      text: "",
-                      fit: BoxFit.contain,
-                    ),
+                  // SizedBox(
+                  //   height: 150.0,
+                  //   width: 300.0,
+                  //   child: AnimatedCardMobile(
+                  //     imagePath: "assets/portfolio.png",
+                  //     text: "",
+                  //     fit: BoxFit.contain,
+                  //   ),
+                  // ),
+                  AnimatedCardMobile(
+                    imagePath: "assets/portfolio.png",
+                    text: "",
+                    fit: BoxFit.contain,
                   ),
                   SizedBox(height: 30.0),
                   SansBold(20.0, "Portfolio"),
