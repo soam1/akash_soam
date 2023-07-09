@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "361229382856",
+    "project_id": "akash-soam",
+    "storage_bucket": "akash-soam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361229382856:android:2492d20d8eec970a51a1fd",
+        "android_client_info": {
+          "package_name": "com.akashsoam.akash_soam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361229382856-fotq8h9g76dk2i55gdc43mbfat14df8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvi3Lh5M_5w7HSTVoOT1D8IxmD4dRvSN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361229382856-fotq8h9g76dk2i55gdc43mbfat14df8g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "361229382856-lnmsgu76rhjov9p6lnoo943c1b4bbgj1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.akashsoam.akashSoam"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

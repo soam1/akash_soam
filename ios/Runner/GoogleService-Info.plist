@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>361229382856-lnmsgu76rhjov9p6lnoo943c1b4bbgj1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.361229382856-lnmsgu76rhjov9p6lnoo943c1b4bbgj1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBi37ePb036QCDZ5HuAncRDy8e6diaHykA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>361229382856</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.akashsoam.akashSoam</string>
+	<key>PROJECT_ID</key>
+	<string>akash-soam</string>
+	<key>STORAGE_BUCKET</key>
+	<string>akash-soam.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:361229382856:ios:579af0ebcc72009e51a1fd</string>
+</dict>
+</plist>
