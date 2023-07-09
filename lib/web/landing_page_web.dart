@@ -347,6 +347,23 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                MaterialButton(
+                  onPressed: () {},
+                  elevation: 20.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  height: 60.0,
+                  minWidth: 200.0,
+                  color: Colors.tealAccent,
+                  child: SansBold(20.0, "Submit"),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             ),
