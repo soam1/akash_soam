@@ -36,6 +36,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
   Widget build(BuildContext context) {
     var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -128,26 +129,26 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
       body: ListView(
         children: [
           //FIRST SECTION
+          CircleAvatar(
+            radius: 117.0,
+            backgroundColor: Colors.tealAccent,
+            child: CircleAvatar(
+              radius: 113.0,
+              backgroundColor: Colors.black,
+              child: CircleAvatar(
+                radius: 110.0,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage("assets/mypic_circular.png"),
+              ),
+            ),
+          ),
           Padding(
-            padding: EdgeInsets.only(
-              left: 20.0,
+            padding: EdgeInsets.symmetric(
+              horizontal: 20.0,
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  radius: 117.0,
-                  backgroundColor: Colors.tealAccent,
-                  child: CircleAvatar(
-                    radius: 113.0,
-                    backgroundColor: Colors.black,
-                    child: CircleAvatar(
-                      radius: 110.0,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage("assets/mypic_circular.png"),
-                    ),
-                  ),
-                ),
                 SizedBox(
                   height: 25.0,
                 ),
@@ -175,7 +176,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
                   height: 15.0,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Wrap(
                       direction: Axis.vertical,
@@ -215,9 +216,9 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
 
           //ABOUT ME(SECOND SECTION)
           Padding(
-            padding: EdgeInsets.only(left: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SansBold(35.0, "About Me"),
@@ -318,7 +319,6 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
           ),
         ],
       ),
-      extendBodyBehindAppBar: true,
     );
   }
 }
