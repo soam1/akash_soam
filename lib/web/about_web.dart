@@ -221,8 +221,8 @@ class _AboutWebState extends State<AboutWeb> {
                     SizedBox(
                       height: 15.0,
                     ),
-                    Sans(15.0,
-                        "Want high performance apps with beautiful UI. MAY I HELP YOU"),
+                    Sans(15.0, "Want high performance apps with beautiful ui."),
+                    Sans(15.0, " MAY I HELP YOU?"),
                   ],
                 ),
               ),

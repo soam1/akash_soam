@@ -353,3 +353,26 @@ class _AnimatedCardMobileState extends State<AnimatedCardMobile>
     );
   }
 }
+
+class AbelCustom extends StatelessWidget {
+  final text;
+  final color;
+  final size;
+  final fontWeight;
+
+  const AbelCustom(
+      {super.key,
+      @required this.text,
+      this.color,
+      @required this.size,
+      this.fontWeight});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: GoogleFonts.abel(
+          fontSize: size, color: color, fontWeight: fontWeight),
+    );
+  }
+}
