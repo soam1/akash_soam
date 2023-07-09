@@ -1,6 +1,7 @@
 import 'package:akash_soam/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
@@ -24,6 +25,16 @@ class _LandingPageWebState extends State<LandingPageWeb> {
       },
     );
   }
+
+  var logger = Logger();
+
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -316,56 +327,121 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           //  FOURTH SECTION(contact me)
           Container(
             height: heightDevice,
-            child: Column(
-              children: [
-                SansBold(40, "Contact me"),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        MyTextFormField("First Name", "John", 1, 200),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        MyTextFormField("Last Name", "Wick", 1, 200),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        MyTextFormField(
-                            "Email", "wickjohn00@gmail.com", 1, 300),
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
-                    Column(
-                      children: [
-                        MyTextFormField("Phone Number", "9876543210", 1, 250),
-                        MyTextFormField("Your Message", "I want to..", 10, 500),
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
-                  ],
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                ),
-                SizedBox(
-                  height: 15.0,
-                ),
-                MaterialButton(
-                  onPressed: () {},
-                  elevation: 20.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  SansBold(40, "Contact me"),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          MyTextFormField(
+                            "First Name",
+                            "John",
+                            1,
+                            200,
+                            controller: _firstNameController,
+                            validator: (text) {
+                              if (text.toString().isEmpty) {
+                                return "First name is required";
+                              }
+                            },
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          MyTextFormField(
+                            "Last Name",
+                            "Wick",
+                            1,
+                            200,
+                            controller: _lastNameController,
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          MyTextFormField(
+                            "Email",
+                            "wickjohn00@gmail.com",
+                            1,
+                            300,
+                            controller: _emailController,
+                            validator: (text) {
+                              if (text.toString().isEmpty) {
+                                return "Email is required";
+                              }
+                            },
+                          ),
+                        ],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                      Column(
+                        children: [
+                          MyTextFormField(
+                            "Phone Number",
+                            "9876543210",
+                            1,
+                            250,
+                            controller: _phoneController,
+                            // validator: (text) {
+                            //   if (text.toString().isEmpty) {
+                            //     return "Phone no is required";
+                            //   }
+                            // },
+                          ),
+                          MyTextFormField(
+                            "Your Message",
+                            "I want to..",
+                            10,
+                            500,
+                            controller: _messageController,
+                            validator: (text) {
+                              if (text.toString().isEmpty) {
+                                return "Message is required";
+                              }
+                            },
+                          ),
+                        ],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      ),
+                    ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   ),
-                  height: 60.0,
-                  minWidth: 200.0,
-                  color: Colors.tealAccent,
-                  child: SansBold(20.0, "Submit"),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-              ],
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  SizedBox(
+                    height: 15.0,
+                  ),
+                  MaterialButton(
+                    onPressed: () async {
+                      logger.d(_firstNameController.text);
+                      final addData = new AddDataToFirestore();
+                      if (formKey.currentState!.validate()) {
+                        await addData.addResponse(
+                            _firstNameController.text,
+                            _lastNameController.text,
+                            _emailController.text,
+                            _phoneController.text,
+                            _messageController.text);
+                        formKey.currentState!.reset();
+                        DialogError(context);
+                      }
+                    },
+                    elevation: 20.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    height: 60.0,
+                    minWidth: 200.0,
+                    color: Colors.tealAccent,
+                    child: SansBold(20.0, "Submit"),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                ],
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
             ),
           ),
         ],

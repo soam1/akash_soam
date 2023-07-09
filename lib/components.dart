@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logger/logger.dart';
 
 class TabsWeb extends StatefulWidget {
   final title;
@@ -113,10 +115,12 @@ class MyTextFormField extends StatelessWidget {
   final hintText;
   final noOfMaxLines;
   final width;
+  final controller;
+  final validator;
 
   const MyTextFormField(
       this.labelText, this.hintText, this.noOfMaxLines, this.width,
-      {super.key});
+      {super.key, this.controller, this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -129,19 +133,23 @@ class MyTextFormField extends StatelessWidget {
         ),
         SizedBox(
             child: TextFormField(
-              // inputFormatters: [
-              //   FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
-              //   LengthLimitingTextInputFormatter(10),
-              // ],
+              validator: validator,
+              controller: controller,
               maxLines: noOfMaxLines,
               decoration: InputDecoration(
+                errorBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.red),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(15.0),
+                  ),
+                ),
                 focusedErrorBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.red),
                   borderRadius: BorderRadius.all(
                     Radius.circular(10.0),
                   ),
                 ),
-                border: OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.teal),
                   borderRadius: BorderRadius.all(
                     Radius.circular(10.0),
@@ -375,4 +383,36 @@ class AbelCustom extends StatelessWidget {
           fontSize: size, color: color, fontWeight: fontWeight),
     );
   }
+}
+
+class AddDataToFirestore {
+  var logger = Logger();
+  CollectionReference response =
+      FirebaseFirestore.instance.collection("messages");
+
+  Future<void> addResponse(final firstName, final lastName, final email,
+      final phoneNo, final message) async {
+    return response
+        .add({
+          'first name': firstName,
+          'last name': lastName,
+          'email': email,
+          'phone number': phoneNo,
+          'message': message,
+        })
+        .then((value) => logger.d("Success"))
+        .catchError((onError) => logger.d(onError));
+  }
+}
+
+Future DialogError(BuildContext context) {
+  return showDialog(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+      title: SansBold(20.0, "Message submitted"),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+    ),
+  );
 }

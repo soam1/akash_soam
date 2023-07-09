@@ -7,6 +7,8 @@ import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
+
   if (kIsWeb) {
     await Firebase.initializeApp(
         options: FirebaseOptions(
@@ -20,7 +22,6 @@ void main() async {
   } else {
     await Firebase.initializeApp();
   }
-  setPathUrlStrategy();
   runApp(const MyApp());
 }
 

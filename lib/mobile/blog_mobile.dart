@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components.dart';
@@ -17,27 +18,28 @@ class _BlogMobileState extends State<BlogMobile> {
   // List title = ["Who is Dash?", "Who is Dash1?"];
   // List body = ["Well, we can all read about it on Google.", "Google it."];
 
-  void article() async {
-    await FirebaseFirestore.instance
-        .collection("articles")
-        .get()
-        .then((querySnapshot) => {
-              // querySnapshot.docs.reversed.forEach((element) {
-              querySnapshot.docs.forEach((element) {
-                // print(element.data()['title']);
-                // print(element.data()['body']);
-              })
-            });
-  }
-
-  void streamArticle() async {
-    await for (var snapshot
-        in FirebaseFirestore.instance.collection('articles').snapshots()) {
-      for (var title in snapshot.docs) {
-        print(title.data()['title']);
-      }
-    }
-  }
+  // void article() async {
+  //   await FirebaseFirestore.instance
+  //       .collection("articles")
+  //       .get()
+  //       .then((querySnapshot) => {
+  //             // querySnapshot.docs.reversed.forEach((element) {
+  //             querySnapshot.docs.forEach((element) {
+  //               // print(element.data()['title']);
+  //               // print(element.data()['body']);
+  //             })
+  //           });
+  // }
+  //
+  // void streamArticle() async {
+  //   var logger = Logger();
+  //   await for (var snapshot
+  //       in FirebaseFirestore.instance.collection('articles').snapshots()) {
+  //     for (var title in snapshot.docs) {
+  //       logger.d(title.data()['title']);
+  //     }
+  //   }
+  // }
 
   // @override
   // void initState() {

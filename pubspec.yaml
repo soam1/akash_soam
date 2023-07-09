@@ -41,7 +41,7 @@ dependencies:
   url_strategy:
   cloud_firestore: ^4.8.2
   firebase_core:
-
+  logger:
 
 dev_dependencies:
   flutter_test:
