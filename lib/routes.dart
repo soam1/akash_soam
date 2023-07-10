@@ -10,6 +10,8 @@ import 'package:akash_soam/web/landing_page_web.dart';
 import 'package:akash_soam/web/works_web.dart';
 import 'package:flutter/material.dart';
 
+import 'common/blog.dart';
+
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -51,14 +53,15 @@ class Routes {
         );
       case '/blog':
         return MaterialPageRoute(
-          builder: (_) => LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > 800) {
-                return BlogWeb();
-              } else
-                return BlogMobile();
-            },
-          ),
+          // builder: (_) => LayoutBuilder(
+          //   builder: (context, constraints) {
+          //     if (constraints.maxWidth > 800) {
+          //       return BlogWeb();
+          //     } else
+          //       return BlogMobile();
+          //   },
+          // ),
+          builder: (_) => Blog(),
           settings: settings,
         );
       case '/works':

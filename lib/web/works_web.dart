@@ -17,43 +17,7 @@ class _WorksWebState extends State<WorksWeb> {
     var widthDevice = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 72.0,
-              backgroundColor: Colors.tealAccent,
-              child: CircleAvatar(
-                radius: 70.0,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage("assets/mypic.png"),
-              ),
-            ),
-            SizedBox(
-              height: 15.0,
-            ),
-            SansBold(30.0, "Akash Soam"),
-            SizedBox(
-              height: 15.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                urlLauncher("assets/instagram2.svg",
-                    "https://instagram.com/narendramodi"),
-                urlLauncher("assets/linkedin.svg",
-                    "https://www.linkedin.com/in/akash-soam-414771225/"),
-                urlLauncher(
-                    "assets/github.svg", "https://www.github.com/soam1"),
-                // urlLauncher(
-                //     "assets/leetcode.svg", "https://www.leetcode.com/soamA"),
-              ],
-            ),
-          ],
-        ),
-      ),
+      drawer: DrawerWeb(),
       backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -72,23 +36,7 @@ class _WorksWebState extends State<WorksWeb> {
                 ),
               ),
               expandedHeight: 500.0,
-              title: Row(
-                children: [
-                  Spacer(
-                    flex: 3,
-                  ),
-                  TabsWeb(title: "Home", route: "/"),
-                  Spacer(),
-                  TabsWeb(title: "Works", route: "/works"),
-                  Spacer(),
-                  TabsWeb(title: "Blog", route: "/blog"),
-                  Spacer(),
-                  TabsWeb(title: "About", route: "/about"),
-                  Spacer(),
-                  TabsWeb(title: "Contact", route: "/contact"),
-                  Spacer(),
-                ],
-              ),
+              title: TabsWebList(),
             ),
           ];
         },
@@ -142,17 +90,17 @@ class _WorksWebState extends State<WorksWeb> {
     );
   }
 
-  urlLauncher(String imagePath, String url) {
-    return IconButton(
-      icon: SvgPicture.asset(
-        imagePath,
-        // color: Colors.black,
-        width: 35,
-        height: 35,
-      ),
-      onPressed: () async {
-        await launchUrl(Uri.parse(url));
-      },
-    );
-  }
+  // urlLauncher(String imagePath, String url) {
+  //   return IconButton(
+  //     icon: SvgPicture.asset(
+  //       imagePath,
+  //       // color: Colors.black,
+  //       width: 35,
+  //       height: 35,
+  //     ),
+  //     onPressed: () async {
+  //       await launchUrl(Uri.parse(url));
+  //     },
+  //   );
+  // }
 }

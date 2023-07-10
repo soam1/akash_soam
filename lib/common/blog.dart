@@ -1,56 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:logger/logger.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../components.dart';
 
-class BlogMobile extends StatefulWidget {
-  const BlogMobile({super.key});
+class Blog extends StatefulWidget {
+  const Blog({super.key});
 
   @override
-  State<BlogMobile> createState() => _BlogMobileState();
+  State<Blog> createState() => _BlogState();
 }
 
-class _BlogMobileState extends State<BlogMobile> {
-  // List title = ["Who is Dash?", "Who is Dash1?"];
-  // List body = ["Well, we can all read about it on Google.", "Google it."];
-
-  // void article() async {
-  //   await FirebaseFirestore.instance
-  //       .collection("articles")
-  //       .get()
-  //       .then((querySnapshot) => {
-  //             // querySnapshot.docs.reversed.forEach((element) {
-  //             querySnapshot.docs.forEach((element) {
-  //               // print(element.data()['title']);
-  //               // print(element.data()['body']);
-  //             })
-  //           });
-  // }
-  //
-  // void streamArticle() async {
-  //   var logger = Logger();
-  //   await for (var snapshot
-  //       in FirebaseFirestore.instance.collection('articles').snapshots()) {
-  //     for (var title in snapshot.docs) {
-  //       logger.d(title.data()['title']);
-  //     }
-  //   }
-  // }
-
-  // @override
-  // void initState() {
-  //   // article();
-  //   streamArticle();
-  //   super.initState();
-  //   // TODO: implement initState
-  // }
-
+class _BlogState extends State<Blog> {
   @override
   Widget build(BuildContext context) {
+    bool isWeb = MediaQuery.of(context).size.width > 800;
+    print(isWeb.toString());
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
@@ -66,18 +31,18 @@ class _BlogMobileState extends State<BlogMobile> {
                   color: Colors.black,
                 ),
                 flexibleSpace: FlexibleSpaceBar(
-                  centerTitle: true,
+                  centerTitle: isWeb ? false : true,
                   title: Container(
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: BorderRadius.circular(3.0),
                     ),
                     padding: EdgeInsets.symmetric(
-                      horizontal: 4.0,
+                      horizontal: isWeb ? 7.0 : 4.0,
                     ),
                     child: AbelCustom(
                       text: "Welcome to my blog",
-                      size: 25.0,
+                      size: isWeb ? 30.0 : 25.0,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -88,7 +53,7 @@ class _BlogMobileState extends State<BlogMobile> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                expandedHeight: 400.0,
+                expandedHeight: isWeb ? 500.0 : 400.0,
               ),
             ];
           },
@@ -102,7 +67,8 @@ class _BlogMobileState extends State<BlogMobile> {
                   itemBuilder: (BuildContext context, int index) {
                     DocumentSnapshot documentSnapshot =
                         snapshot.data!.docs[index];
-                    return BlogPost(
+                    return BlogPostCommon(
+                        isWeb: isWeb,
                         title: documentSnapshot['title'],
                         body: documentSnapshot['body']);
                   },
@@ -120,27 +86,38 @@ class _BlogMobileState extends State<BlogMobile> {
   }
 }
 
-class BlogPost extends StatefulWidget {
+class BlogPostCommon extends StatefulWidget {
   final title;
   final body;
+  final isWeb;
 
-  const BlogPost({super.key, @required this.title, @required this.body});
+  const BlogPostCommon(
+      {super.key,
+      @required this.title,
+      @required this.body,
+      @required this.isWeb});
 
   @override
-  State<BlogPost> createState() => _BlogPostState();
+  State<BlogPostCommon> createState() => _BlogPostCommonState();
 }
 
-class _BlogPostState extends State<BlogPost> {
+class _BlogPostCommonState extends State<BlogPostCommon> {
   bool expand = false;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 20.0,
-        right: 20.0,
-        top: 30.0,
-      ),
+      padding: widget.isWeb
+          ? EdgeInsets.only(
+              left: 70.0,
+              right: 70.0,
+              top: 40.0,
+            )
+          : EdgeInsets.only(
+              left: 20.0,
+              right: 20.0,
+              top: 30.0,
+            ),
       child: Container(
         padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(

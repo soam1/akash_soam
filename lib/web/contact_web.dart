@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../components.dart';
@@ -12,47 +13,20 @@ class ContactWeb extends StatefulWidget {
 }
 
 class _ContactWebState extends State<ContactWeb> {
+  var logger = Logger();
+
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
-      drawer: Drawer(
-        backgroundColor: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 72.0,
-              backgroundColor: Colors.tealAccent,
-              child: CircleAvatar(
-                radius: 70.0,
-                backgroundColor: Colors.white,
-                backgroundImage: AssetImage("assets/mypic.png"),
-              ),
-            ),
-            SizedBox(
-              height: 15.0,
-            ),
-            SansBold(30.0, "Akash Soam"),
-            SizedBox(
-              height: 15.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                urlLauncher("assets/instagram2.svg",
-                    "https://instagram.com/narendramodi"),
-                urlLauncher("assets/linkedin.svg",
-                    "https://www.linkedin.com/in/akash-soam-414771225/"),
-                urlLauncher(
-                    "assets/github.svg", "https://www.github.com/soam1"),
-                // urlLauncher(
-                //     "assets/leetcode.svg", "https://www.leetcode.com/soamA"),
-              ],
-            ),
-          ],
-        ),
-      ),
+      drawer: DrawerWeb(),
       backgroundColor: Colors.white,
       body: NestedScrollView(
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
@@ -71,81 +45,134 @@ class _ContactWebState extends State<ContactWeb> {
                 ),
               ),
               expandedHeight: 500.0,
-              title: Row(
-                children: [
-                  Spacer(
-                    flex: 3,
-                  ),
-                  TabsWeb(title: "Home", route: "/"),
-                  Spacer(),
-                  TabsWeb(title: "Works", route: "/works"),
-                  Spacer(),
-                  TabsWeb(title: "Blog", route: "/blog"),
-                  Spacer(),
-                  TabsWeb(title: "About", route: "/about"),
-                  Spacer(),
-                  TabsWeb(title: "Contact", route: "/contact"),
-                  Spacer(),
-                ],
-              ),
+              title: TabsWebList(),
             ),
           ];
         },
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30.0,
-              ),
-              SansBold(40.0, "Contact me"),
-              SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      MyTextFormField("First Name", "John", 1, 200),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      MyTextFormField("Last Name", "Wick", 1, 200),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      MyTextFormField("Email", "wickjohn00@gmail.com", 1, 300),
-                    ],
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                  ),
-                  Column(
-                    children: [
-                      MyTextFormField("Phone Number", "9876543210", 1, 250),
-                      MyTextFormField("Your Message", "I want to..", 10, 500),
-                    ],
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                  ),
-                ],
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              ),
-              SizedBox(
-                height: 15.0,
-              ),
-              MaterialButton(
-                onPressed: () {},
-                elevation: 20.0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30.0,
                 ),
-                height: 60.0,
-                minWidth: 200.0,
-                color: Colors.tealAccent,
-                child: SansBold(20.0, "Submit"),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-            ],
+                SansBold(40.0, "Contact me"),
+                SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  children: [
+                    Column(
+                      children: [
+                        MyTextFormField(
+                          "First Name",
+                          "John",
+                          1,
+                          200,
+                          controller: _firstNameController,
+                          validator: (text) {
+                            if (text.toString().isEmpty) {
+                              return "First name is required";
+                            }
+                          },
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        MyTextFormField(
+                          "Last Name",
+                          "Wick",
+                          1,
+                          200,
+                          controller: _lastNameController,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        MyTextFormField(
+                          "Email",
+                          "wickjohn00@gmail.com",
+                          1,
+                          300,
+                          controller: _emailController,
+                          validator: (text) {
+                            if (text.toString().isEmpty) {
+                              return "Email is required";
+                            }
+                          },
+                        ),
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    Column(
+                      children: [
+                        MyTextFormField(
+                          "Phone Number",
+                          "9876543210",
+                          1,
+                          250,
+                          controller: _phoneController,
+                          // validator: (text) {
+                          //   if (text.toString().isEmpty) {
+                          //     return "Phone no is required";
+                          //   }
+                          // },
+                        ),
+                        MyTextFormField(
+                          "Your Message",
+                          "I want to..",
+                          10,
+                          500,
+                          controller: _messageController,
+                          validator: (text) {
+                            if (text.toString().isEmpty) {
+                              return "Message is required";
+                            }
+                          },
+                        ),
+                      ],
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                MaterialButton(
+                  onPressed: () async {
+                    logger.d(_firstNameController.text);
+                    final addData = new AddDataToFirestore();
+                    if (formKey.currentState!.validate()) {
+                      if (await addData.addResponse(
+                          _firstNameController.text,
+                          _lastNameController.text,
+                          _emailController.text,
+                          _phoneController.text,
+                          _messageController.text)) {
+                        formKey.currentState!.reset();
+                        DialogError(context, "Message sent successfully");
+                      } else {
+                        DialogError(context, "Message failed to send");
+                      }
+                    }
+                  },
+                  elevation: 20.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  height: 60.0,
+                  minWidth: 200.0,
+                  color: Colors.tealAccent,
+                  child: SansBold(20.0, "Submit"),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+              ],
+            ),
           ),
         ),
       ),
