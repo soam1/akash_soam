@@ -2,6 +2,7 @@ import 'package:akash_soam/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_strategy/url_strategy.dart';
 //kIsWeb is a variable which return true if an app is running on web
 
@@ -20,6 +21,7 @@ void main() async {
             appId: "1:361229382856:web:e4c35fc72eefed7351a1fd",
             measurementId: "G-G3NEL1DNWH"));
   } else {
+    GoogleFonts.config.allowRuntimeFetching = false;
     await Firebase.initializeApp();
   }
   runApp(const MyApp());
