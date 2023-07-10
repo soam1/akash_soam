@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../components.dart';
 
@@ -15,26 +12,6 @@ class AboutWeb extends StatefulWidget {
 class _AboutWebState extends State<AboutWeb> {
   @override
   Widget build(BuildContext context) {
-    tealContainerForProgSkills(
-      text,
-    ) {
-      return Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.tealAccent,
-            style: BorderStyle.solid,
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
-        padding: EdgeInsets.all(7.0),
-        child: Text(
-          text,
-          style: GoogleFonts.openSans(fontSize: 15.0),
-        ),
-      );
-    }
-
     var widthDevice = MediaQuery.of(context).size.width;
 
     return Scaffold(
@@ -209,18 +186,4 @@ class _AboutWebState extends State<AboutWeb> {
       ),
     );
   }
-
-  // urlLauncher(String imagePath, String url) {
-  //   return IconButton(
-  //     icon: SvgPicture.asset(
-  //       imagePath,
-  //       // color: Colors.black,
-  //       width: 35,
-  //       height: 35,
-  //     ),
-  //     onPressed: () async {
-  //       await launchUrl(Uri.parse(url));
-  //     },
-  //   );
-  // }
 }

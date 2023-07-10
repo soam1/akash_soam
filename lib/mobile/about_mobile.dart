@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../components.dart';
 
 class AboutMobile extends StatefulWidget {
@@ -92,7 +88,7 @@ class _AboutMobileState extends State<AboutMobile> {
                 height: 40.0,
               ),
 
-              //web development card (second subsection)
+              //cards (second subsection)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -138,26 +134,6 @@ class _AboutMobileState extends State<AboutMobile> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  tealContainerForProgSkills(
-    text,
-  ) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.tealAccent,
-          style: BorderStyle.solid,
-          width: 2.0,
-        ),
-        borderRadius: BorderRadius.circular(5.0),
-      ),
-      padding: EdgeInsets.all(7.0),
-      child: Text(
-        text,
-        style: GoogleFonts.openSans(fontSize: 15.0),
       ),
     );
   }
